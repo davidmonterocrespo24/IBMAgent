@@ -1,5 +1,5 @@
 spec_version: v1
-kind: native
+kind: react
 name: python_programmer_agent
 # Seleccionamos un LLM potente, puedes cambiarlo por otro disponible en watsonx.
 llm: watsonx/meta-llama/llama-3-405b-instruct
@@ -90,6 +90,6 @@ tools:
 
 # Mensaje de bienvenida para una mejor experiencia de usuario.
 welcome_content:
-  welcome_message: "Hola, soy tu asistente de programación Python. ¿En qué puedo ayudarte hoy? Puedo leer, crear, listar y buscar en tus archivos."
+  welcome_message: "Hola, soy tu asistente Python. ¿En qué puedo ayudarte?/"
   description: "Mensaje de bienvenida para el asistente de Python."
   is_default_message: false
