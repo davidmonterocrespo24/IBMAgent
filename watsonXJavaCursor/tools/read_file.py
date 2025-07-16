@@ -35,6 +35,16 @@ def read_file(target_file: str, should_read_entire_file: bool, start_line_one_in
               end_line_one_indexed_inclusive: int, explanation: str = "") -> str:
     """
     Read the contents of a file with line range support.
+    
+    Parameters:
+        target_file (str): Path to the file to be read
+        should_read_entire_file (bool): Whether to read the entire file or use line range
+        start_line_one_indexed (int): Starting line number (1-based indexing)
+        end_line_one_indexed_inclusive (int): Ending line number (1-based, inclusive)
+        explanation (str): Optional explanation for the read operation
+    
+    Returns:
+        str: File contents with line range information, or error message if file not found
     """
     target_file = to_workspace_path(target_file) 
     try:

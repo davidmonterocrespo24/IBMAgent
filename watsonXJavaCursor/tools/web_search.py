@@ -12,6 +12,14 @@ from ibm_watsonx_orchestrate.agent_builder.tools import tool
 def web_search(search_term: str, explanation: str = "", max_results: int = 5) -> str:
     """
     Search the web using web scraping from multiple search engines.
+    
+    Parameters:
+        search_term (str): The search query to look for on the web
+        explanation (str): Optional explanation for the web search operation
+        max_results (int): Maximum number of search results to return (default: 5)
+    
+    Returns:
+        str: Formatted search results with titles, URLs, and descriptions from multiple search engines
     """
     try:
         results = []

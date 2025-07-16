@@ -5,6 +5,15 @@ from ibm_watsonx_orchestrate.agent_builder.tools import tool
 def edit_file(target_file: str, instructions: str, code_edit: str, explanation: str = "") -> str:
     """
     Apply edits to an existing file using the // ... existing code ... marker system.
+    
+    Parameters:
+        target_file (str): Path to the file to be edited
+        instructions (str): Description of the changes to be made
+        code_edit (str): The new code content with markers indicating where existing code should be preserved
+        explanation (str): Optional explanation for the edit operation
+    
+    Returns:
+        str: Success message with edit summary or error message if operation failed
     """
     try:
         # Read the current file

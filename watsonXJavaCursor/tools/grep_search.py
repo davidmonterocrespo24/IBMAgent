@@ -9,17 +9,17 @@ from ibm_watsonx_orchestrate.agent_builder.tools import tool
 @tool
 def grep_search(query, case_sensitive=True, include_pattern=None, exclude_pattern=None, explanation=None):
     """
-    Busca un patrón regex en archivos usando filtros de inclusión y exclusión.
+    Search for a regex pattern in files using inclusion and exclusion filters.
     
-    Args:
-        query (str): El patrón regex a buscar
-        case_sensitive (bool): Si la búsqueda debe ser sensible a mayúsculas/minúsculas
-        include_pattern (str): Patrón glob para archivos a incluir (ej: '*.py')
-        exclude_pattern (str): Patrón glob para archivos a excluir
-        explanation (str): Explicación de una oración del propósito de la búsqueda
+    Parameters:
+        query (str): The regex pattern to search for
+        case_sensitive (bool): Whether the search should be case-sensitive
+        include_pattern (str): Glob pattern for files to include (e.g., '*.py')
+        exclude_pattern (str): Glob pattern for files to exclude
+        explanation (str): One-sentence explanation of the search purpose
     
     Returns:
-        list: Lista de diccionarios con los resultados encontrados
+        list: List of dictionaries with search results including file path, line number, and matches
     """
     results = []
     

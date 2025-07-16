@@ -33,6 +33,16 @@ def to_workspace_path(path_like: Union[str, Path]) -> Path:
 
 @tool
 def write_file(file_path: str, content: str) -> str:
+    """
+    Write content to a file in the workspace, creating directories if necessary.
+    
+    Parameters:
+        file_path (str): Path to the file to be created or overwritten
+        content (str): Content to write to the file
+    
+    Returns:
+        str: Success message with file path or error message if operation failed
+    """
     try:
         abs_path = to_workspace_path(file_path)        # <<<<<<
         abs_path.parent.mkdir(parents=True, exist_ok=True)

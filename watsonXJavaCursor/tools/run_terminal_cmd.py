@@ -13,7 +13,16 @@ WORKSPACE.mkdir(parents=True, exist_ok=True)
 def run_terminal_cmd(command: str, is_background: bool = False, require_user_approval: bool = True,
                     explanation: str = "") -> str:
     """
-    Execute a terminal command. In Autogen Studio, this would require user approval for safety.
+    Execute a terminal command in the workspace with optional user approval for safety.
+    
+    Parameters:
+        command (str): The shell command to execute
+        is_background (bool): Whether to run the command in background mode
+        require_user_approval (bool): Whether user approval is required before execution
+        explanation (str): Optional explanation for the command execution
+    
+    Returns:
+        str: Command output and error information, or approval request message if user approval required
     """
     if require_user_approval:
         # In a real implementation, you'd present this to the user for approval

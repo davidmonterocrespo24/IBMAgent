@@ -7,6 +7,12 @@ from ibm_watsonx_orchestrate.agent_builder.tools import tool
 def diff_history(explanation: str = "") -> str:
     """
     Retrieve the history of recent changes made to files in the workspace.
+    
+    Parameters:
+        explanation (str): Optional explanation for retrieving the history
+    
+    Returns:
+        str: Recent git history including commit messages and file statistics, or error message if git not available
     """
     try:
         # This would typically integrate with git or file system monitoring

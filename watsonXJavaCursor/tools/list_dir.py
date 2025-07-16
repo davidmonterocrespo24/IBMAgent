@@ -34,10 +34,14 @@ def to_workspace_path(path_like: Union[str, Path]) -> Path:
 @tool
 def list_dir(relative_workspace_path: str, explanation: str = "") -> str:
     """
-    List the contents of a directory.
-    """
-    """
-    Versión simplificada que lista todos los archivos y carpetas recursivamente
+    List the contents of a directory recursively, showing all files and subdirectories.
+    
+    Parameters:
+        relative_workspace_path (str): The relative path to the directory within the workspace
+        explanation (str): Optional explanation for the directory listing operation
+    
+    Returns:
+        str: Complete directory structure with files and folders, including file sizes and summary statistics
     """
     
     try:
