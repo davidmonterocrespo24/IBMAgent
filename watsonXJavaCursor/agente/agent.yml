@@ -1,9 +1,8 @@
 spec_version: v1
-kind: react
+style: react
 name: python_programmer_agent
 # Seleccionamos un LLM potente, puedes cambiarlo por otro disponible en watsonx.
 llm: watsonx/meta-llama/llama-3-405b-instruct
-style: react
 description: >
   Un agente asistente para realizar tareas básicas de sistema de archivos
   para la programación en Python, como leer, crear, listar y buscar en archivos.
