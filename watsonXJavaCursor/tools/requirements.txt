@@ -1,0 +1,7 @@
+# IBM watsonx Orchestrate Agent Builder SDK
+ibm-watsonx-orchestrate
+
+# Additional dependencies for file operations
+beautifulsoup4
+requests
+pathlib
