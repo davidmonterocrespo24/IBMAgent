@@ -32,7 +32,7 @@ def to_workspace_path(path_like: Union[str, Path]) -> Path:
 
 
 @tool
-def write_file(file_path: str, content: str) -> str:
+def write_file(file_path: str, content: str, explanation: str = "") -> str:
     """
     Write content to a file in the workspace, creating directories if necessary.
     
