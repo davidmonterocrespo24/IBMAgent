@@ -1,0 +1,56 @@
+import asyncio
+from duckduckgo_search import DDGS
+
+from autogen_agentchat.agents import AssistantAgent
+from autogen_agentchat.ui import Console
+from autogen_core.models import UserMessage
+from autogen_ext.models.ollama import OllamaChatCompletionClient
+
+
+# --- Herramienta: búsqueda web usando DuckDuckGo ---
+async def web_search(query: str, max_results: int = 5) -> str:
+    """Busca información en la web y devuelve títulos + URLs."""
+    with DDGS() as ddgs:
+        results = ddgs.text(query, max_results=max_results)
+        if not results:
+            return "No se encontraron resultados."
+        return "\n".join([f"- {r['title']}: {r['href']}" for r in results])
+
+
+# --- Cliente de modelo: Ollama (servidor local) ---
+# Asegúrate de tener Ollama corriendo en localhost:11434 y el modelo descargado (ej: llama3.2).
+ollama_model_client = OllamaChatCompletionClient(
+    model="llama3.2",              # Modelo cargado en Ollama
+    host="http://localhost:11434", # URL por defecto de Ollama
+)
+
+
+# --- Crear el agente ---
+agent = AssistantAgent(
+    name="general_agent",
+    model_client=ollama_model_client,
+    tools=[web_search],  # el agente puede invocar la herramienta web_search
+    system_message=(
+        "Eres un agente de propósito general. "
+        "Usa tus conocimientos y la herramienta web_search cuando necesites información de internet. "
+        "Devuelve respuestas claras y bien explicadas."
+    ),
+    max_tool_iterations=5,  # el agente puede llamar varias veces a herramientas si lo necesita
+)
+
+
+# --- Ejecución del agente ---
+async def main():
+    task = "Busca en internet qué es Microsoft AutoGen y explícalo en lenguaje sencillo."
+    
+    # Opción 1: ejecución directa
+    result = await agent.run(task=task)
+    print("\n--- Resultado final ---")
+    print(result.messages[-1].content)
+
+    # Opción 2: ejecución en streaming (muestra paso a paso)
+    # await Console(agent.run_stream(task=task), output_stats=True)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
